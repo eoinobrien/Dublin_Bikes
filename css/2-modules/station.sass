@@ -27,9 +27,13 @@ article.station
   @include row
   aside
     @include span-columns(6)
+    @include media($mobile)
+      @include span-columns(12)
     margin-top: 5px
   article
     @include span-columns(6)
+    @include media($mobile)
+      @include span-columns(12)
     margin-top: 5px
     padding: 5px
     border-top: $grey-500 solid 10px

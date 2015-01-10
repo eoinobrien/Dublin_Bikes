@@ -734,6 +734,14 @@ article.station {
     margin-top: 5px; }
     .single-station-page aside:last-child {
       margin-right: 0; }
+    @media screen and (max-width: 720px) {
+      .single-station-page aside {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%; }
+        .single-station-page aside:last-child {
+          margin-right: 0; } }
   .single-station-page article {
     float: left;
     display: block;
@@ -746,6 +754,14 @@ article.station {
     vertical-align: middle; }
     .single-station-page article:last-child {
       margin-right: 0; }
+    @media screen and (max-width: 720px) {
+      .single-station-page article {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 100%; }
+        .single-station-page article:last-child {
+          margin-right: 0; } }
     .single-station-page article div.name-dist {
       float: left;
       display: block;

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="dbikes">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dublin Bikes</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/0-vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body ng-controller="BikesController">
+    <!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+    <header headroom class="headroom">
+        <h1><a href="#home" class="logo" data-scroll>{{city.city}} Bikes</a></h1>
+        <nav>
+            <ul>
+                <li class="menu-item"><a href="" ng-click="update()"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon refresh"><path d="M35.3 12.7C32.41 9.8 28.42 8 24 8 15.16 8 8.02 15.16 8.02 24S15.16 40 24 40c7.45 0 13.69-5.1 15.46-12H35.3c-1.65 4.66-6.07 8-11.3 8-6.63 0-12-5.37-12-12s5.37-12 12-12c3.31 0 6.28 1.38 8.45 3.55L26 22h14V8l-4.7 4.7z"/></svg><span>Refresh</span></a></li>
+                <li class="menu-item order">
+                    <select title="Order List By" ng-model="order" ng-change="reorder()">
+                        <option value="name">Name</option>
+                        <option value="distance">Distance</option>
+                    </select>
+                </li>
+                <li class="menu-item search-box">
+                    <input type="search" ng-model="search" title="Search for Station" placeholder="Search">
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <aside>Last updated: <span am-time-ago="message.time"></span></aside>
+        <article class="station bikes-{{ station.free_bikes / 7 | number:0}}" ng-repeat="station in stations | filter:search">
+            <div class="name-dist">
+                <h1>{{station.name | lowercasePossesion}}</h1>
+                <span ng-if="station.distance != null"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon location"><path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>{{station.distance}}km</span>
+            </div>
+
+            <div class="bikes-space">
+                <span>
+                    {{station.empty_slots}} <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon free"><path d="M6 10v8h4v-8h8V6h-8c-2.21 0-4 1.79-4 4zm4 20H6v8c0 2.21 1.79 4 4 4h8v-4h-8v-8zm28 8h-8v4h8c2.21 0 4-1.79 4-4v-8h-4v8zm0-32h-8v4h8v8h4v-8c0-2.21-1.79-4-4-4z"/></svg>
+                </span>
+                <span>
+                    {{station.free_bikes}} <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon bike"><path d="M32 9.6c1.98 0 3.6-1.61 3.6-3.6S33.98 2.4 32 2.4c-1.99 0-3.6 1.61-3.6 3.6s1.61 3.6 3.6 3.6zM38 24c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 17c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-8.4-21H38v-3.6h-6.4l-3.87-6.53c-.59-1-1.68-1.67-2.93-1.67-.94 0-1.79.38-2.4 1L15 16.59c-.62.62-1 1.47-1 2.41 0 1.26.67 2.32 1.7 2.94L22.4 26v10H26V23.04l-4.5-3.34 4.64-4.66L29.6 20zM10 24C4.48 24 0 28.48 0 34s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 17c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+                </span>
+            </div>
+        </article>
+    </main>
+
+    <script src="js/0-vendor/angular.min.js"></script>
+    <script src="js/0-vendor/moment.min.js"></script>
+    <script src="js/0-vendor/angular-moment.min.js"></script>
+    <script src="js/0-vendor/angular-aria.min.js"></script>
+    <script src="js/0-vendor/headroom.min.js"></script>
+    <script src="js/0-vendor/angular.headroom.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

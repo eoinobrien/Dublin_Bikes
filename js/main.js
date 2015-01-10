@@ -1,7 +1,21 @@
-var dbikes = angular.module('dbikes', ['ngAria', 'angularMoment', 'headroom']);
+var dbikes = angular.module('dbikes', ['ngAria', 'ngRoute', 'angularMoment', 'headroom']);
 
-dbikes.controller('BikesController', ['$scope', '$filter', '$http', function($scope, $filter, $http) {
+dbikes.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.
+  when('/', {
+    templateUrl: 'pages/index.html',
+    controller: 'IndexController'
+  }).
+  when('/station/:stationId', {
+    templateUrl: 'pages/station.html',
+    controller: 'StationController'
+  }).
+  otherwise({
+    redirectTo: '/'
+  });
+}]);
 
+dbikes.controller('IndexController', ['$scope', '$filter', '$http', function($scope, $filter, $http) {
   var apiUrl = "http://api.citybik.es/v2/networks/dublinbikes";
   $scope.message = {
     text: ' ',
@@ -87,6 +101,11 @@ dbikes.controller('BikesController', ['$scope', '$filter', '$http', function($sc
     var num = radiansTo(start, end) * 3958.8;
     return Math.round(num * 100) / 100;
   }
+}]);
+
+dbikes.controller('StationController', ['$scope', '$filter', '$http', function($scope, $filter, $http) {
+  $scope.station_id = $routeParams.stationId;
+  $scope.message = "TEST";
 }]);
 
 dbikes.filter('lowercasePossesion', function() {

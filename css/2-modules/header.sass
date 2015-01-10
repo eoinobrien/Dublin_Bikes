@@ -1,0 +1,66 @@
+header.headroom
+  @include row
+  padding: 5px 10px
+  background: $amber
+  position: fixed
+  width: 100%
+  max-width: 68em
+  top: 0
+  transition: transform 200ms linear
+
+  h1
+    @include span-columns(5)
+    margin-top: 0
+    margin-bottom: 0
+    font-size: 1.5em
+    @include media($mobile)
+      @include span-columns(12)
+      text-align: center
+      width: 100%
+      margin: 0
+
+  nav
+    @include span-columns(7)
+    height: 100%
+    text-align: right
+    @include media($mobile)
+      @include span-columns(12)
+      margin: 0
+      text-align: center
+      li a span
+        display: none
+    li
+      display: inline-block
+      height: 100%
+      margin-left: 10px
+      &:first-child
+        margin-left: 0
+
+  &.headroom--pinned
+    transform: translateY(0%)
+  &.headroom--unpinned
+    transform: translateY(-100%)
+
+.search-box
+  width: 30%
+  @include media($mobile)
+    width: 40%
+
+input[type="search"], select
+  width: 100%
+  height: 100%
+  padding: 5px
+  margin: 0
+  color: $dark-gray
+  border: 1px solid $amber-700
+  box-sizing: border-box
+  border-radius: 3px
+  background: $amber-100
+  &:focus
+    border: 1px solid $amber-900
+    box-shadow: none
+  &:hover
+    border: 1px solid $grey-500
+
+a:hover .icon, a:focus .icon
+  fill: $dark-gray

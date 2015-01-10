@@ -1,3 +1,30 @@
-<main>
-    {{scope.message}}
+<main class="single-station-page">
+    <aside class="station">
+        <map zoom="11" center="[{{station.latitude}}, {{station.longitude}}]" pan-control="true">
+            <info-window position="{{station.latitude}},{{station.longitude}}" visible="true">
+            <div ng-non-bindable="">
+                {{station.name}}<br>
+                LatLng: {{station.latitude}}, {{station.longitude}}, <br>
+                Zoom Level {{map.getZoom()}}
+            </div>
+        </info-window>
+        <marker position="[{{station.latitude}}, {{station.longitude}}]" title="{{station.name}}" visible="true"></marker>
+    </map>
+</aside>
+<article class="bikes-{{ station.free_bikes / 7 | number:0}}">
+    <div class="name-dist">
+        <h1>{{station.name}}</h1>
+        <span ng-if="station.distance != null"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon location"><path d="M24 4c-7.73 0-14 6.27-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.73-6.27-14-14-14zm0 19c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>{{station.distance}}km</span>
+    </div>
+
+    <div class="bikes-space">
+        <span>
+            {{station.free_bikes}} <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon bike"><path d="M32 9.6c1.98 0 3.6-1.61 3.6-3.6S33.98 2.4 32 2.4c-1.99 0-3.6 1.61-3.6 3.6s1.61 3.6 3.6 3.6zM38 24c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 17c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-8.4-21H38v-3.6h-6.4l-3.87-6.53c-.59-1-1.68-1.67-2.93-1.67-.94 0-1.79.38-2.4 1L15 16.59c-.62.62-1 1.47-1 2.41 0 1.26.67 2.32 1.7 2.94L22.4 26v10H26V23.04l-4.5-3.34 4.64-4.66L29.6 20zM10 24C4.48 24 0 28.48 0 34s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 17c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+        </span>
+        <span>
+            {{station.empty_slots}} <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon free"><path d="M6 10v8h4v-8h8V6h-8c-2.21 0-4 1.79-4 4zm4 20H6v8c0 2.21 1.79 4 4 4h8v-4h-8v-8zm28 8h-8v4h8c2.21 0 4-1.79 4-4v-8h-4v8zm0-32h-8v4h8v8h4v-8c0-2.21-1.79-4-4-4z"/></svg>
+        </span>
+    </div>
+</article>
+
 </main>

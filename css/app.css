@@ -85,8 +85,7 @@ hr {
 
 img,
 picture {
-  margin: 0;
-  max-width: 100%; }
+  margin: 0; }
 
 blockquote {
   border-left: 2px solid #eeeeee;
@@ -674,7 +673,7 @@ input[type="search"], select {
   border: 1px solid #ffa000;
   box-sizing: border-box;
   border-radius: 3px;
-  background: #ffe082; }
+  background: #ffecb3; }
   input[type="search"]:focus, select:focus {
     border: 1px solid #ff6f00;
     box-shadow: none; }
@@ -721,6 +720,65 @@ article.station {
     display: block;
     min-width: 3em; }
 
+.single-station-page {
+  display: block; }
+  .single-station-page:after {
+    content: "";
+    display: table;
+    clear: both; }
+  .single-station-page aside {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-top: 5px; }
+    .single-station-page aside:last-child {
+      margin-right: 0; }
+  .single-station-page article {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 48.82117%;
+    margin-top: 5px;
+    padding: 5px;
+    border-top: #9e9e9e solid 10px;
+    background: white;
+    vertical-align: middle; }
+    .single-station-page article:last-child {
+      margin-right: 0; }
+    .single-station-page article div.name-dist {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%; }
+      .single-station-page article div.name-dist:last-child {
+        margin-right: 0; }
+      .single-station-page article div.name-dist h1 {
+        font-size: 1.5em;
+        margin: 0;
+        text-align: center; }
+    .single-station-page article div.bikes-space {
+      display: block; }
+      .single-station-page article div.bikes-space:after {
+        content: "";
+        display: table;
+        clear: both; }
+      .single-station-page article div.bikes-space span {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 48.82117%;
+        text-align: center; }
+        .single-station-page article div.bikes-space span:last-child {
+          margin-right: 0; }
+    .single-station-page article.bikes-0 {
+      border-color: #d50000; }
+    .single-station-page article.bikes-1 {
+      border-color: #ffab00; }
+    .single-station-page article .bikes-space span {
+      display: block;
+      min-width: 3em; }
+
 body {
   max-width: 68em;
   margin-left: auto;
@@ -734,6 +792,12 @@ body {
   @media screen and (max-width: 720px) {
     body {
       margin-top: 4.6875em; } }
+  body main {
+    display: block; }
+    body main:after {
+      content: "";
+      display: table;
+      clear: both; }
   body aside {
     text-align: center; }
 

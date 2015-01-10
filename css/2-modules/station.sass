@@ -1,0 +1,59 @@
+article.station
+  @include row
+  margin: 7px 5px
+  padding: 5px
+  border-bottom: $grey-500 solid 3px
+  background: white
+  vertical-align: middle
+  div.name-dist
+    @include span-columns(9)
+    h1
+      font-size: 1.5em
+      margin: 0
+  div.bikes-space
+    @include span-columns(3)
+    text-align: right
+
+  &.bikes-0
+    border-color: $red-A700
+  &.bikes-1
+    border-color: $amber-A700
+
+  .bikes-space span
+    display: block
+    min-width: 3em
+
+.single-station-page
+  @include row
+  aside
+    @include span-columns(6)
+    margin-top: 5px
+  article
+    @include span-columns(6)
+    margin-top: 5px
+    padding: 5px
+    border-top: $grey-500 solid 10px
+    background: white
+    vertical-align: middle
+    div.name-dist
+      @include span-columns(12)
+      h1
+        font-size: 1.5em
+        margin: 0
+        text-align: center
+    div.bikes-space
+      @include row
+      span
+        @include span-columns(6)
+        text-align: center
+
+    &.bikes-0
+      border-color: $red-A700
+    &.bikes-1
+      border-color: $amber-A700
+
+    .bikes-space span
+      display: block
+      min-width: 3em
+
+

@@ -1,0 +1,18 @@
+body
+  @include outer-container
+  background: $grey-200
+  margin-top: em(45px)
+  @include media($mobile)
+    margin-top: em(75px)
+  main
+    @include row
+  aside
+    text-align: center
+.icon
+  height: 1.3em
+  width: 1.3em
+  vertical-align: middle
+  fill: $dark-gray
+
+a .icon
+  fill: $grey-700

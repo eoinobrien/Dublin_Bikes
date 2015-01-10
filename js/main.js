@@ -1,16 +1,16 @@
-var dbikes = angular.module('dbikes', ['ngAria', 'ngRoute', 'angularMoment', 'headroom']);
+var dbikes = angular.module('dbikes', ['ngAria', 'ngRoute', 'angularMoment', 'headroom', 'ngMap']);
 
 dbikes.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-  when('/', {
-    templateUrl: 'pages/index.html',
+  $routeProvider
+  .when('/', {
+    templateUrl: 'pages/home.html',
     controller: 'IndexController'
-  }).
-  when('/station/:stationId', {
+  })
+  .when('/station/:station_id', {
     templateUrl: 'pages/station.html',
     controller: 'StationController'
-  }).
-  otherwise({
+  })
+  .otherwise({
     redirectTo: '/'
   });
 }]);
@@ -103,9 +103,37 @@ dbikes.controller('IndexController', ['$scope', '$filter', '$http', function($sc
   }
 }]);
 
-dbikes.controller('StationController', ['$scope', '$filter', '$http', function($scope, $filter, $http) {
-  $scope.station_id = $routeParams.stationId;
-  $scope.message = "TEST";
+dbikes.controller('StationController', ['$scope', '$filter', '$http', '$routeParams', function($scope, $filter, $http, $routeParams) {
+  var apiUrl = "http://api.citybik.es/v2/networks/dublinbikes";
+  $scope.message = {
+    text: ' ',
+    time: ''
+  };
+  $scope.city = {};
+  $scope.stationId = $routeParams.station_id;
+  $scope.station = {};
+
+  $scope.setStation = function(_inList){
+    var list = _inList || $scope.stations;
+    for(var i = 0; i < list.length; i++){
+      if(parseInt(list[i].extra.uid) === parseInt($scope.stationId)){
+        $scope.station = list[i];
+      }
+    }
+  }
+  $scope.update = function() {
+    var response = $http.get(apiUrl);
+    response.success(function(data, status, headers, config) {
+      $scope.setStation(data.network.stations);
+      $scope.city = data.network.location;
+      $scope.message.time = new Date();
+    });
+    response.error(function(data, status, headers, config) {
+      console.log("Updating data failed!");
+    });
+  };
+
+  $scope.update();
 }]);
 
 dbikes.filter('lowercasePossesion', function() {

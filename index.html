@@ -14,23 +14,6 @@
 </head>
 <body>
     <!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
-    <header headroom class="headroom">
-    <h1><a href="#home" class="logo" data-scroll>Dublin Bikes</a></h1>
-        <nav>
-            <ul>
-                <li class="menu-item"><a href="" ng-click="update()"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" class="icon refresh"><path d="M35.3 12.7C32.41 9.8 28.42 8 24 8 15.16 8 8.02 15.16 8.02 24S15.16 40 24 40c7.45 0 13.69-5.1 15.46-12H35.3c-1.65 4.66-6.07 8-11.3 8-6.63 0-12-5.37-12-12s5.37-12 12-12c3.31 0 6.28 1.38 8.45 3.55L26 22h14V8l-4.7 4.7z"/></svg><span>Refresh</span></a></li>
-                <li class="menu-item order">
-                    <select title="Order List By" ng-model="order" ng-change="reorder()">
-                        <option value="name">Name</option>
-                        <option value="distance">Distance</option>
-                    </select>
-                </li>
-                <li class="menu-item search-box">
-                    <input type="search" ng-model="search" title="Search for Station" placeholder="Search">
-                </li>
-            </ul>
-        </nav>
-    </header>
     <ng-view></ng-view>
 
     <script src="js/0-vendor/angular.min.js"></script>
